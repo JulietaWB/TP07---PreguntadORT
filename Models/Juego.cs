@@ -11,7 +11,7 @@ public static class Juego
 
 
     // Métodos
-    private void InicializarJuego()
+    private static void InicializarJuego()
     {
         Username="";
         PuntajeActual=0;
@@ -19,7 +19,7 @@ public static class Juego
         CantidadPreguntasCorrectas=0;
     }
 
-    public List<Categoria>  ObtenerCategorias()
+    public static List<Categoria>  ObtenerCategorias()
     {
         List <Categoria> lista = new List <Categoria>();
         lista=BD.ObtenerCategorias();
@@ -27,7 +27,7 @@ public static class Juego
         return lista;
     }
 
-    public List<Dificultad>  ObtenerDificultades()
+    public static List<Dificultad>  ObtenerDificultades()
     {
         List <Dificultad> lista = new List <Dificultad>();
         lista=BD.ObtenerDificultades();
@@ -35,7 +35,7 @@ public static class Juego
         return lista;
     }
 
-    public List<Pregunta> CargarPartida(string username, int dificultad, int categoria)
+    public static List<Pregunta> CargarPartida(string username, int dificultad, int categoria)
     {
         List <Pregunta> lista = new List <Pregunta>();
         lista=BD.ObtenerPreguntas(dificultad, categoria);
@@ -44,11 +44,11 @@ public static class Juego
         return lista;
     }
 
-    public Pregunta ObtenerProximaPregunta()
+    public static Pregunta ObtenerProximaPregunta()
     {
         Pregunta pre = new Pregunta();
         List <Pregunta> lista = new List <Pregunta>();
-        lista=BD.ObtenerPreguntas(dificultad, categoria)
+        lista=BD.ObtenerPreguntas(dificultad, categoria);
         pre=lista[ContadorPreguntaActual];
 
         return pre;

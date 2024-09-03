@@ -17,4 +17,33 @@ public class HomeController : Controller
     {
         return View();
     }
+
+    
+    
+    public IActionResult  ConfigurarJuego()
+    {
+        ViewBag.categoria= BD.ObtenerCategorias();
+        ViewBag.categoria= BD.ObtenerDificultades();
+        return View();
+        
+    }
+
+    
+    public IActionResult Comenzar(string username, int dificultad, int categoria)
+    {
+        return RedirectToAction("Jugar");
+    }
+
+    
+    public IActionResult Jugar()
+    {
+        //que sería todo?? 
+        // invocar? me pone mal
+        return View();
+    }
+
+    [HttpPost] public IActionResult VerificarRespuesta (int idPregunta, int idRespuesta)
+    {
+        VerificarRespuesta(); //??    
+    }
 }
