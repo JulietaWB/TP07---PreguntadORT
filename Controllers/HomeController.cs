@@ -37,13 +37,23 @@ public class HomeController : Controller
     
     public IActionResult Jugar()
     {
-        //que sería todo?? 
-        // invocar? me pone mal
-        return View();
+        Pregunta preg = new Pregunta();
+        preg=Juego.ObtenerProximaPregunta();
+
+        if (preg is null)
+        {
+            return View("Fin");
+        } else
+        {
+            List<Respuesta> listaRespuestas = new List<Respuesta>();
+            listaRespuestas=BD.ObtenerRespuestas(preg.IdPregunta);
+            return View("Juego");
+        }
     }
 
     [HttpPost] public IActionResult VerificarRespuesta (int idPregunta, int idRespuesta)
     {
-        VerificarRespuesta(); //??    
+        ViewBag.acertado=Juego.VerificarRespuesta(idRespuesta);
+        return View("Respuesta");
     }
 }

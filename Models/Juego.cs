@@ -46,13 +46,28 @@ public static class Juego
 
     public static Pregunta ObtenerProximaPregunta()
     {
-        Pregunta pre = new Pregunta();
-        List <Pregunta> lista = new List <Pregunta>();
-        lista=BD.ObtenerPreguntas(dificultad, categoria);
-        pre=lista[ContadorPreguntaActual];
+        Pregunta preg = new Pregunta();
+        preg=ListaPreguntas[ContadorPreguntaActual];
 
-        return pre;
+        return preg;
     }
 
+    public static bool VerificarRespuesta(int idRespuesta)
+    {
+        List <Respuesta> lista = new List <Respuesta>();
+        lista=BD.ObtenerRespuestas(ContadorPreguntaActual);
+        bool acertado=false;
+
+        if (lista[idRespuesta].Correcta == true)
+        {
+            PuntajeActual+=10;
+            CantidadPreguntasCorrectas++;
+            acertado=true;
+        }
+
+        ContadorPreguntaActual++;
+        PreguntaActual=ListaPreguntas[ContadorPreguntaActual];
+        return acertado;
+    }
 
 }
