@@ -1,8 +1,9 @@
+namespace TP07.Models;
 public class Categoria
 {
-    private static int IdCategoria {get;set; }
-    private static string Nombre {get;set; }
-    private static string Foto {get;set; }
+    private  int IdCategoria {get;set; }
+    private  string Nombre {get;set; }
+    private  string Foto {get;set; }
 
     public Categoria (int idCategoria, string nombre, string foto) 
     {

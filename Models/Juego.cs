@@ -1,3 +1,4 @@
+namespace TP07.Models;
 public static class Juego
 {
     //Propiedades
@@ -21,27 +22,19 @@ public static class Juego
 
     public static List<Categoria>  ObtenerCategorias()
     {
-        List <Categoria> lista = new List <Categoria>();
-        lista=BD.ObtenerCategorias();
 
-        return lista;
+        return BD.ObtenerCategorias();
     }
 
     public static List<Dificultad>  ObtenerDificultades()
     {
-        List <Dificultad> lista = new List <Dificultad>();
-        lista=BD.ObtenerDificultades();
-
-        return lista;
+        return BD.ObtenerDificultades();
     }
 
-    public static List<Pregunta> CargarPartida(string username, int dificultad, int categoria)
+    public static void CargarPartida(string username, int dificultad, int categoria)
     {
-        List <Pregunta> lista = new List <Pregunta>();
-        lista=BD.ObtenerPreguntas(dificultad, categoria);
+        ListaPreguntas=BD.ObtenerPreguntas(dificultad, categoria);
         Juego.InicializarJuego();
-
-        return lista;
     }
 
     public static Pregunta ObtenerProximaPregunta()
@@ -52,13 +45,26 @@ public static class Juego
         return preg;
     }
 
+    public static List<Respuesta> ObtenerProximasRespuestas(int idPregunta)
+    {
+        ListaRespuestas = BD.ObtenerRespuestas(idPregunta);
+        return ListaRespuestas;
+    }
     public static bool VerificarRespuesta(int idRespuesta)
     {
-        List <Respuesta> lista = new List <Respuesta>();
-        lista=BD.ObtenerRespuestas(ContadorPreguntaActual);
         bool acertado=false;
 
-        if (lista[idRespuesta].Correcta == true)
+        foreach(Respuesta item in ListaRespuestas)
+        {
+            if (item.IdRespuesta == idRespuesta)
+            {
+                acertado = item.Correcta;
+            }
+        }
+
+
+
+/*        if (lista[idRespuesta].Correcta == true)
         {
             PuntajeActual+=10;
             CantidadPreguntasCorrectas++;
@@ -66,7 +72,7 @@ public static class Juego
         }
 
         ContadorPreguntaActual++;
-        PreguntaActual=ListaPreguntas[ContadorPreguntaActual];
+        PreguntaActual=ListaPreguntas[ContadorPreguntaActual];*/
         return acertado;
     }
 

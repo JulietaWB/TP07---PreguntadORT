@@ -37,16 +37,16 @@ public class HomeController : Controller
     
     public IActionResult Jugar()
     {
-        Pregunta preg = new Pregunta();
-        preg=Juego.ObtenerProximaPregunta();
+        Pregunta preg = Juego.ObtenerProximaPregunta();
 
         if (preg is null)
         {
             return View("Fin");
-        } else
+        } 
+        else
         {
-            List<Respuesta> listaRespuestas = new List<Respuesta>();
-            listaRespuestas=BD.ObtenerRespuestas(preg.IdPregunta);
+            
+            ViewBag.ListaRespuestas = Juego.ObtenerProximasRespuestas(preg.IdPregunta);
             return View("Juego");
         }
     }
