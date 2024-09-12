@@ -3,15 +3,15 @@ using Dapper;
 namespace TP07.Models;
 public static class BD{
 
-    private static string connectionString = @"Server=localhost; DataBase = JJOO; Trusted_Connection=True;";
+    private static string connectionString = @"Server=localhost; DataBase = TP07-PreguntadORT; Trusted_Connection=True;";
 
     public static List<Categoria> ObtenerCategorias()
     {
         List <Categoria> lista = new List <Categoria>();
-        string sql = "SELECT * from Categorias)";
+        string sql = "SELECT * from Categorías";
         using (SqlConnection db =  new SqlConnection (connectionString)) 
         { 
-            lista= db.Query<Categoria>(sql).ToList();    
+            lista= db.Query<Categoria>(sql).ToList();
         }
 
         return lista;
@@ -20,7 +20,7 @@ public static class BD{
     public static List<Dificultad> ObtenerDificultades()
     {
         List <Dificultad> lista = new List <Dificultad>();
-        string sql = "SELECT * from Dificultad)";
+        string sql = "SELECT * from Dificultades";
         using (SqlConnection db =  new SqlConnection (connectionString)) 
         { 
             lista= db.Query<Dificultad>(sql).ToList();    

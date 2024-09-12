@@ -1,0 +1,40 @@
+@{
+    ViewData["Title"] = "ConfigurarJuego";
+}
+
+
+<div class="fondoMain">
+    <h3 class="subtitulo">Antes de empezar </h3>
+    <h1 class="titulo2"> CONFIGUREMOS TU EXPERIENCIA</h1>
+
+    <div class="divFormulario">
+
+        <form method="post" action='@Url.Action("Comenzar", "Home")'>
+
+            <p>Username</p>
+            <input type="text" name="username" required/>
+
+            <select class="form-select form-select-sm selector" aria-label="Small select example">
+                <option selected required>Dificultad:</option>
+                @foreach (Dificultad item in ViewBag.dificultades)
+                { 
+                    <option value=@item.IdDificultad >@item.Nombre</option>
+                }
+            </select>
+
+            <select class="form-select form-select-sm selector" aria-label="Small select example">
+                <option selected required>Categoría:</option>
+                @foreach (Categoria item in ViewBag.categorias)
+                { 
+                    <option value=@item.IdCategoria >@item.Nombre</option>
+                }
+            </select>
+
+            <div class="col-12">
+                    <button class="botonJugar" type="submit">Jugar</button>
+            </div>
+
+        </form>
+
+    </div>
+</div>

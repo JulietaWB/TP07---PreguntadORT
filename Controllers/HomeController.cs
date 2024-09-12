@@ -15,17 +15,19 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        Juego.InicializarJuego();
         return View();
     }
 
     
     
-    public IActionResult  ConfigurarJuego()
+    public IActionResult ConfigurarJuego()
     {
-        ViewBag.categoria= BD.ObtenerCategorias();
-        ViewBag.categoria= BD.ObtenerDificultades();
+        ViewBag.categorias= BD.ObtenerCategorias();
+        ViewBag.dificultades= BD.ObtenerDificultades();
+
         return View();
-        
+
     }
 
     
