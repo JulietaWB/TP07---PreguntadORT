@@ -12,7 +12,7 @@ public static class Juego
 
 
     // Métodos
-    private static void InicializarJuego()
+    public static void InicializarJuego()
     {
         Username="";
         PuntajeActual=0;
