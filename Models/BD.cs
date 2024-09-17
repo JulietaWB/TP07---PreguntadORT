@@ -35,13 +35,13 @@ public static class BD{
         string sql;
 
         if (dificultad == -1)
-        {sql = "SELECT * from Preguntas where IdCategoria = @cat";}
+        {sql = "SELECT * from Preguntas where IdCategoría = @cat";}
         else if (categoria == -1)
         {sql = "SELECT * from Preguntas where IdDificultad= @dif";}
         else if (categoria == -1 && dificultad == -1)
         {sql = "SELECT * from Preguntas";}
         else
-        {sql = "SELECT * from Preguntas where IdDificultad= @dif AND IdCategoria = @cat";}
+        {sql = "SELECT * from Preguntas where IdDificultad= @dif AND IdCategoría = @cat";}
 
         using (SqlConnection db =  new SqlConnection (connectionString)) 
         { 

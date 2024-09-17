@@ -2,8 +2,8 @@ namespace TP07.Models;
 public static class Juego
 {
     //Propiedades
-    private static string Username {get;set; }
-    private static int PuntajeActual {get;set; }
+    public string Username {get;set; }
+    public int PuntajeActual {get;set; }
     private static int ContadorPreguntaActual {get;set; }
     private static Pregunta PreguntaActual {get;set; }
     private static int CantidadPreguntasCorrectas {get;set; }
@@ -16,7 +16,7 @@ public static class Juego
     {
         Username="";
         PuntajeActual=0;
-        ContadorPreguntaActual=1;
+        ContadorPreguntaActual=0;
         CantidadPreguntasCorrectas=0;
     }
 
@@ -34,6 +34,7 @@ public static class Juego
     public static void CargarPartida(string username, int dificultad, int categoria)
     {
         ListaPreguntas=BD.ObtenerPreguntas(dificultad, categoria);
+        Username=username;
         Juego.InicializarJuego();
     }
 
@@ -62,17 +63,6 @@ public static class Juego
             }
         }
 
-
-
-/*        if (lista[idRespuesta].Correcta == true)
-        {
-            PuntajeActual+=10;
-            CantidadPreguntasCorrectas++;
-            acertado=true;
-        }
-
-        ContadorPreguntaActual++;
-        PreguntaActual=ListaPreguntas[ContadorPreguntaActual];*/
         return acertado;
     }
 

@@ -1,0 +1,32 @@
+@{
+    ViewData["Title"] = "Juego";
+}
+
+
+<div class="fondoMain">
+
+    <h4 class="username"> @ViewBag.Username </h4>
+    <h4 class="puntaje"> @ViewBag.Puntos </h4>
+
+    <img src=@ViewBag.Pregunta.Foto/>
+
+    <h3 class="enunciado"> @ViewBag.Pregunta.Enunciado </h3>
+
+
+    <form method="post" action='@Url.Action("Comenzar", "Home")'>
+
+        @foreach (Respuesta item in ViewBag.ListaRespuestas)
+        { 
+            <p class="respuesta">
+
+            <input type="radio" class="btn-check" name="respuestas" id=@item.IdRespuesta autocomplete="off">
+            <label class="btn btn-secondary" for=@item.IdRespuesta>@item.Contenido</label>
+        }
+
+        <div class="col-12">
+            <button class="botonJugar" type="submit">Enviar</button>
+        </div>
+
+    </form>
+
+</div>

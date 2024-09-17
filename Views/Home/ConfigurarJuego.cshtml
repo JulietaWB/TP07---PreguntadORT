@@ -7,34 +7,31 @@
     <h3 class="subtitulo">Antes de empezar </h3>
     <h1 class="titulo2"> CONFIGUREMOS TU EXPERIENCIA</h1>
 
-    <div class="divFormulario">
+    <form method="post" action='@Url.Action("Comenzar", "Home")'>
 
-        <form method="post" action='@Url.Action("Comenzar", "Home")'>
+        <p>Username</p>
+        <input type="text" name="username" required/>
 
-            <p>Username</p>
-            <input type="text" name="username" required/>
+        <select name="dificultad" class="form-select form-select-sm selector" aria-label="Small select example">
+            <option selected required>Dificultad:</option>
+            @foreach (Dificultad item in ViewBag.dificultades)
+            { 
+                <option value=@item.IdDificultad >@item.Nombre</option>
+            }
+        </select>
 
-            <select class="form-select form-select-sm selector" aria-label="Small select example">
-                <option selected required>Dificultad:</option>
-                @foreach (Dificultad item in ViewBag.dificultades)
-                { 
-                    <option value=@item.IdDificultad >@item.Nombre</option>
-                }
-            </select>
+        <select name="categoria" class="form-select form-select-sm selector" aria-label="Small select example">
+            <option selected required>Categoría:</option>
+            @foreach (Categoria item in ViewBag.categorias)
+            { 
+                <option value=@item.IdCategoría >@item.Nombre</option>
+            }
+        </select>
 
-            <select class="form-select form-select-sm selector" aria-label="Small select example">
-                <option selected required>Categoría:</option>
-                @foreach (Categoria item in ViewBag.categorias)
-                { 
-                    <option value=@item.IdCategoria >@item.Nombre</option>
-                }
-            </select>
+        <div class="col-12">
+                <button class="botonJugar" type="submit">Jugar</button>
+        </div>
 
-            <div class="col-12">
-                    <button class="botonJugar" type="submit">Jugar</button>
-            </div>
+    </form>
 
-        </form>
-
-    </div>
 </div>
